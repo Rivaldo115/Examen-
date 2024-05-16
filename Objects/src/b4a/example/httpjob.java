@@ -81,18 +81,35 @@ RDebugUtils.currentLine=3080202;
  //BA.debugLineNum = 3080202;BA.debugLine="End Sub";
 return "";
 }
-public String  _poststring(b4a.example.httpjob __ref,String _link,String _text) throws Exception{
+public String  _download(b4a.example.httpjob __ref,String _link) throws Exception{
 __ref = this;
 RDebugUtils.currentModule="httpjob";
-if (Debug.shouldDelegate(ba, "poststring", true))
-	 {return ((String) Debug.delegate(ba, "poststring", new Object[] {_link,_text}));}
-RDebugUtils.currentLine=3211264;
- //BA.debugLineNum = 3211264;BA.debugLine="Public Sub PostString(Link As String, Text As Stri";
-RDebugUtils.currentLine=3211265;
- //BA.debugLineNum = 3211265;BA.debugLine="PostBytes(Link, Text.GetBytes(\"UTF8\"))";
-__ref._postbytes /*String*/ (null,_link,_text.getBytes("UTF8"));
-RDebugUtils.currentLine=3211266;
- //BA.debugLineNum = 3211266;BA.debugLine="End Sub";
+if (Debug.shouldDelegate(ba, "download", true))
+	 {return ((String) Debug.delegate(ba, "download", new Object[] {_link}));}
+RDebugUtils.currentLine=3866624;
+ //BA.debugLineNum = 3866624;BA.debugLine="Public Sub Download(Link As String)";
+RDebugUtils.currentLine=3866625;
+ //BA.debugLineNum = 3866625;BA.debugLine="Try";
+try {RDebugUtils.currentLine=3866626;
+ //BA.debugLineNum = 3866626;BA.debugLine="Link = AddScheme(Link)";
+_link = __ref._addscheme /*String*/ (null,_link);
+RDebugUtils.currentLine=3866627;
+ //BA.debugLineNum = 3866627;BA.debugLine="req.InitializeGet(Link)";
+__ref._req /*anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest*/ .InitializeGet(_link);
+ } 
+       catch (Exception e5) {
+			ba.setLastException(e5);RDebugUtils.currentLine=3866629;
+ //BA.debugLineNum = 3866629;BA.debugLine="Log($\"Invalid link: ${Link}\"$)";
+__c.LogImpl("93866629",("Invalid link: "+__c.SmartStringFormatter("",(Object)(_link))+""),0);
+RDebugUtils.currentLine=3866630;
+ //BA.debugLineNum = 3866630;BA.debugLine="req.InitializeGet(InvalidURL)";
+__ref._req /*anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest*/ .InitializeGet(__ref._invalidurl /*String*/ );
+ };
+RDebugUtils.currentLine=3866632;
+ //BA.debugLineNum = 3866632;BA.debugLine="CallSubDelayed2(HttpUtils2Service, \"SubmitJob\", M";
+__c.CallSubDelayed2(ba,(Object)(_httputils2service.getObject()),"SubmitJob",this);
+RDebugUtils.currentLine=3866633;
+ //BA.debugLineNum = 3866633;BA.debugLine="End Sub";
 return "";
 }
 public String  _getstring(b4a.example.httpjob __ref) throws Exception{
@@ -122,6 +139,34 @@ __c.File.Delete(_httputils2service._tempfolder /*String*/ ,__ref._taskid /*Strin
 RDebugUtils.currentLine=4194308;
  //BA.debugLineNum = 4194308;BA.debugLine="End Sub";
 return "";
+}
+public String  _putstring(b4a.example.httpjob __ref,String _link,String _text) throws Exception{
+__ref = this;
+RDebugUtils.currentModule="httpjob";
+if (Debug.shouldDelegate(ba, "putstring", true))
+	 {return ((String) Debug.delegate(ba, "putstring", new Object[] {_link,_text}));}
+RDebugUtils.currentLine=3342336;
+ //BA.debugLineNum = 3342336;BA.debugLine="Public Sub PutString(Link As String, Text As Strin";
+RDebugUtils.currentLine=3342337;
+ //BA.debugLineNum = 3342337;BA.debugLine="PutBytes(Link, Text.GetBytes(\"UTF8\"))";
+__ref._putbytes /*String*/ (null,_link,_text.getBytes("UTF8"));
+RDebugUtils.currentLine=3342338;
+ //BA.debugLineNum = 3342338;BA.debugLine="End Sub";
+return "";
+}
+public anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest  _getrequest(b4a.example.httpjob __ref) throws Exception{
+__ref = this;
+RDebugUtils.currentModule="httpjob";
+if (Debug.shouldDelegate(ba, "getrequest", true))
+	 {return ((anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest) Debug.delegate(ba, "getrequest", null));}
+RDebugUtils.currentLine=4390912;
+ //BA.debugLineNum = 4390912;BA.debugLine="Public Sub GetRequest As OkHttpRequest";
+RDebugUtils.currentLine=4390913;
+ //BA.debugLineNum = 4390913;BA.debugLine="Return req";
+if (true) return __ref._req /*anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest*/ ;
+RDebugUtils.currentLine=4390914;
+ //BA.debugLineNum = 4390914;BA.debugLine="End Sub";
+return null;
 }
 public String  _delete(b4a.example.httpjob __ref,String _link) throws Exception{
 __ref = this;
@@ -154,49 +199,18 @@ RDebugUtils.currentLine=4063241;
  //BA.debugLineNum = 4063241;BA.debugLine="End Sub";
 return "";
 }
-public String  _download(b4a.example.httpjob __ref,String _link) throws Exception{
+public String  _poststring(b4a.example.httpjob __ref,String _link,String _text) throws Exception{
 __ref = this;
 RDebugUtils.currentModule="httpjob";
-if (Debug.shouldDelegate(ba, "download", true))
-	 {return ((String) Debug.delegate(ba, "download", new Object[] {_link}));}
-RDebugUtils.currentLine=3866624;
- //BA.debugLineNum = 3866624;BA.debugLine="Public Sub Download(Link As String)";
-RDebugUtils.currentLine=3866625;
- //BA.debugLineNum = 3866625;BA.debugLine="Try";
-try {RDebugUtils.currentLine=3866626;
- //BA.debugLineNum = 3866626;BA.debugLine="Link = AddScheme(Link)";
-_link = __ref._addscheme /*String*/ (null,_link);
-RDebugUtils.currentLine=3866627;
- //BA.debugLineNum = 3866627;BA.debugLine="req.InitializeGet(Link)";
-__ref._req /*anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest*/ .InitializeGet(_link);
- } 
-       catch (Exception e5) {
-			ba.setLastException(e5);RDebugUtils.currentLine=3866629;
- //BA.debugLineNum = 3866629;BA.debugLine="Log($\"Invalid link: ${Link}\"$)";
-__c.LogImpl("93866629",("Invalid link: "+__c.SmartStringFormatter("",(Object)(_link))+""),0);
-RDebugUtils.currentLine=3866630;
- //BA.debugLineNum = 3866630;BA.debugLine="req.InitializeGet(InvalidURL)";
-__ref._req /*anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest*/ .InitializeGet(__ref._invalidurl /*String*/ );
- };
-RDebugUtils.currentLine=3866632;
- //BA.debugLineNum = 3866632;BA.debugLine="CallSubDelayed2(HttpUtils2Service, \"SubmitJob\", M";
-__c.CallSubDelayed2(ba,(Object)(_httputils2service.getObject()),"SubmitJob",this);
-RDebugUtils.currentLine=3866633;
- //BA.debugLineNum = 3866633;BA.debugLine="End Sub";
-return "";
-}
-public String  _putstring(b4a.example.httpjob __ref,String _link,String _text) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="httpjob";
-if (Debug.shouldDelegate(ba, "putstring", true))
-	 {return ((String) Debug.delegate(ba, "putstring", new Object[] {_link,_text}));}
-RDebugUtils.currentLine=3342336;
- //BA.debugLineNum = 3342336;BA.debugLine="Public Sub PutString(Link As String, Text As Strin";
-RDebugUtils.currentLine=3342337;
- //BA.debugLineNum = 3342337;BA.debugLine="PutBytes(Link, Text.GetBytes(\"UTF8\"))";
-__ref._putbytes /*String*/ (null,_link,_text.getBytes("UTF8"));
-RDebugUtils.currentLine=3342338;
- //BA.debugLineNum = 3342338;BA.debugLine="End Sub";
+if (Debug.shouldDelegate(ba, "poststring", true))
+	 {return ((String) Debug.delegate(ba, "poststring", new Object[] {_link,_text}));}
+RDebugUtils.currentLine=3211264;
+ //BA.debugLineNum = 3211264;BA.debugLine="Public Sub PostString(Link As String, Text As Stri";
+RDebugUtils.currentLine=3211265;
+ //BA.debugLineNum = 3211265;BA.debugLine="PostBytes(Link, Text.GetBytes(\"UTF8\"))";
+__ref._postbytes /*String*/ (null,_link,_text.getBytes("UTF8"));
+RDebugUtils.currentLine=3211266;
+ //BA.debugLineNum = 3211266;BA.debugLine="End Sub";
 return "";
 }
 public String  _complete(b4a.example.httpjob __ref,int _id) throws Exception{
@@ -215,20 +229,6 @@ __c.CallSubDelayed2(ba,__ref._target /*Object*/ ,"JobDone",this);
 RDebugUtils.currentLine=4456451;
  //BA.debugLineNum = 4456451;BA.debugLine="End Sub";
 return "";
-}
-public anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest  _getrequest(b4a.example.httpjob __ref) throws Exception{
-__ref = this;
-RDebugUtils.currentModule="httpjob";
-if (Debug.shouldDelegate(ba, "getrequest", true))
-	 {return ((anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest) Debug.delegate(ba, "getrequest", null));}
-RDebugUtils.currentLine=4390912;
- //BA.debugLineNum = 4390912;BA.debugLine="Public Sub GetRequest As OkHttpRequest";
-RDebugUtils.currentLine=4390913;
- //BA.debugLineNum = 4390913;BA.debugLine="Return req";
-if (true) return __ref._req /*anywheresoftware.b4h.okhttp.OkHttpClientWrapper.OkHttpRequest*/ ;
-RDebugUtils.currentLine=4390914;
- //BA.debugLineNum = 4390914;BA.debugLine="End Sub";
-return null;
 }
 public String  _addscheme(b4a.example.httpjob __ref,String _link) throws Exception{
 __ref = this;

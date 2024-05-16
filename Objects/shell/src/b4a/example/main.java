@@ -56,15 +56,15 @@ public boolean isSingleton() {
 	}
 public static RemoteObject __c = RemoteObject.declareNull("anywheresoftware.b4a.keywords.Common");
 public static RemoteObject _xui = RemoteObject.declareNull("anywheresoftware.b4a.objects.B4XViewWrapper.XUI");
-public static RemoteObject _tipowyvernrepo = RemoteObject.declareNull("b4a.example.tipowyvernrepository");
 public static RemoteObject _txtid = RemoteObject.declareNull("anywheresoftware.b4a.objects.EditTextWrapper");
 public static RemoteObject _txtnombre = RemoteObject.declareNull("anywheresoftware.b4a.objects.EditTextWrapper");
 public static RemoteObject _txtelemento = RemoteObject.declareNull("anywheresoftware.b4a.objects.EditTextWrapper");
 public static RemoteObject _txttipo = RemoteObject.declareNull("anywheresoftware.b4a.objects.EditTextWrapper");
-public static RemoteObject _tiposwyverns = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.List");
+public static RemoteObject _acttipo = RemoteObject.declareNull("anywheresoftware.b4a.objects.AutoCompleteEditTextWrapper");
+public static RemoteObject _tiposwyverns = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.Map");
 public static b4a.example.starter _starter = null;
 public static b4a.example.httputils2service _httputils2service = null;
   public Object[] GetGlobals() {
-		return new Object[] {"Activity",main.mostCurrent._activity,"HttpUtils2Service",Debug.moduleToString(b4a.example.httputils2service.class),"Starter",Debug.moduleToString(b4a.example.starter.class),"tiposWyverns",main.mostCurrent._tiposwyverns,"tipoWyvernRepo",main._tipowyvernrepo,"txtElemento",main.mostCurrent._txtelemento,"txtId",main.mostCurrent._txtid,"txtNombre",main.mostCurrent._txtnombre,"txtTipo",main.mostCurrent._txttipo,"xui",main._xui};
+		return new Object[] {"Activity",main.mostCurrent._activity,"actTipo",main.mostCurrent._acttipo,"HttpUtils2Service",Debug.moduleToString(b4a.example.httputils2service.class),"Starter",Debug.moduleToString(b4a.example.starter.class),"tiposWyverns",main.mostCurrent._tiposwyverns,"txtElemento",main.mostCurrent._txtelemento,"txtId",main.mostCurrent._txtid,"txtNombre",main.mostCurrent._txtnombre,"txtTipo",main.mostCurrent._txttipo,"xui",main._xui};
 }
 }

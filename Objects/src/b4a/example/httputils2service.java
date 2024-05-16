@@ -66,7 +66,7 @@ RDebugUtils.currentLine=2949125;
 if (_job== null) { 
 RDebugUtils.currentLine=2949126;
  //BA.debugLineNum = 2949126;BA.debugLine="Log(\"HttpUtils2Service: job completed multiple t";
-anywheresoftware.b4a.keywords.Common.LogImpl("62949126","HttpUtils2Service: job completed multiple times - "+BA.NumberToString(_taskid),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("12949126","HttpUtils2Service: job completed multiple times - "+BA.NumberToString(_taskid),0);
 RDebugUtils.currentLine=2949127;
  //BA.debugLineNum = 2949127;BA.debugLine="Return";
 if (true) return "";
@@ -96,7 +96,7 @@ RDebugUtils.currentLine=2883584;
  //BA.debugLineNum = 2883584;BA.debugLine="Sub hc_ResponseError (Response As OkHttpResponse,";
 RDebugUtils.currentLine=2883586;
  //BA.debugLineNum = 2883586;BA.debugLine="Log($\"ResponseError. Reason: ${Reason}, Response:";
-anywheresoftware.b4a.keywords.Common.LogImpl("62883586",("ResponseError. Reason: "+anywheresoftware.b4a.keywords.Common.SmartStringFormatter("",(Object)(_reason))+", Response: "+anywheresoftware.b4a.keywords.Common.SmartStringFormatter("",(Object)(_response.getErrorResponse()))+""),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("12883586",("ResponseError. Reason: "+anywheresoftware.b4a.keywords.Common.SmartStringFormatter("",(Object)(_reason))+", Response: "+anywheresoftware.b4a.keywords.Common.SmartStringFormatter("",(Object)(_response.getErrorResponse()))+""),0);
 RDebugUtils.currentLine=2883588;
  //BA.debugLineNum = 2883588;BA.debugLine="Response.Release";
 _response.Release();
@@ -108,7 +108,7 @@ RDebugUtils.currentLine=2883590;
 if (_job== null) { 
 RDebugUtils.currentLine=2883591;
  //BA.debugLineNum = 2883591;BA.debugLine="Log(\"HttpUtils2Service (hc_ResponseError): job c";
-anywheresoftware.b4a.keywords.Common.LogImpl("62883591","HttpUtils2Service (hc_ResponseError): job completed multiple times - "+BA.NumberToString(_taskid),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("12883591","HttpUtils2Service (hc_ResponseError): job completed multiple times - "+BA.NumberToString(_taskid),0);
 RDebugUtils.currentLine=2883592;
  //BA.debugLineNum = 2883592;BA.debugLine="Return";
 if (true) return "";
@@ -147,7 +147,7 @@ RDebugUtils.currentLine=2752514;
 if (_job== null) { 
 RDebugUtils.currentLine=2752515;
  //BA.debugLineNum = 2752515;BA.debugLine="Log(\"HttpUtils2Service (hc_ResponseSuccess): job";
-anywheresoftware.b4a.keywords.Common.LogImpl("62752515","HttpUtils2Service (hc_ResponseSuccess): job completed multiple times - "+BA.NumberToString(_taskid),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("12752515","HttpUtils2Service (hc_ResponseSuccess): job completed multiple times - "+BA.NumberToString(_taskid),0);
 RDebugUtils.currentLine=2752516;
  //BA.debugLineNum = 2752516;BA.debugLine="Return";
 if (true) return "";
@@ -204,10 +204,10 @@ anywheresoftware.b4a.keywords.Common.File.Delete(_tempfolder,"~test.test");
        catch (Exception e6) {
 			processBA.setLastException(e6);RDebugUtils.currentLine=2424839;
  //BA.debugLineNum = 2424839;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("62424839",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(processBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("12424839",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(processBA)),0);
 RDebugUtils.currentLine=2424840;
  //BA.debugLineNum = 2424840;BA.debugLine="Log(\"Switching to File.DirInternal\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("62424840","Switching to File.DirInternal",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("12424840","Switching to File.DirInternal",0);
 RDebugUtils.currentLine=2424841;
  //BA.debugLineNum = 2424841;BA.debugLine="TempFolder = File.DirInternal";
 _tempfolder = anywheresoftware.b4a.keywords.Common.File.getDirInternal();

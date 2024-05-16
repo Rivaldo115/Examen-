@@ -1,150 +1,61 @@
 b4a.example
 0
-6
-wyvern
-wyverns
-tipowyvern
-retrofitclient
-tipowyvernrepository
+1
 httpjob
 1
 httpjob
-main,activity_create,1,0,28,30
-,txtid,,txtnombre
-,txtid,,txtnombre
-
-main,activity_pause,0,0,36,38
-
-
-
-main,activity_resume,0,0,32,34
-
-
-
-main,btnbuscar_click,1,0,50,53
-,txtid,,tipowyvernrepo,httputils2service,tempfolder,,txtnombre
-
-tipowyvernrepository,readtipowyvernbyid,httpjob,initialize,httpjob,download,httpjob,getstring,,filltipowyverndetails,httpjob,release,httpjob,addscheme,httpjob,getstring2
-main,btneditar_click,1,0,61,66
-,txtid,,txtnombre,,tipowyvernrepo
-
-
-main,btneliminar_click,1,0,42,48
-,txtid,,tipowyvernrepo,,txtnombre,httputils2service,tempfolder
-
-tipowyvernrepository,deletetipowyvern,httpjob,initialize,httpjob,delete,httpjob,release,httpjob,addscheme
-main,btninsertar_click,1,0,55,59
-,txtnombre,,tipowyvernrepo
-
-
-main,filltipowyverndetails,1,0,68,71
-,txtid,,txtnombre
-
-
-main,globals,0,1,20,26
-
-
-
-main,process_globals,0,1,15,18
-
-
-
-tipowyvernrepository,readtipowyvernbyid,1,0,29,54
-httputils2service,tempfolder,main,txtid,main,txtnombre
-
-httpjob,initialize,httpjob,download,httpjob,getstring,main,filltipowyverndetails,httpjob,release,httpjob,addscheme,httpjob,getstring2
-tipowyvernrepository,deletetipowyvern,1,0,76,90
-httputils2service,tempfolder
-
-httpjob,initialize,httpjob,delete,httpjob,release,httpjob,addscheme
-tipowyvernrepository,class_globals,0,0,1,3
-
-
-
-tipowyvernrepository,createjson,0,0,92,96
-
-
-
-tipowyvernrepository,createtipowyvern,1,0,9,27
-httputils2service,tempfolder
-
-httpjob,initialize,httpjob,poststring,,createjson,httpjob,getstring,httpjob,release,httpjob,postbytes,httpjob,addscheme,httpjob,getstring2
-tipowyvernrepository,initialize,0,0,5,7
-
-
-
-tipowyvernrepository,updatetipowyvern,1,0,56,74
-httputils2service,tempfolder
-
-httpjob,initialize,httpjob,putstring,,createjson,httpjob,getstring,httpjob,release,httpjob,putbytes,httpjob,addscheme,httpjob,getstring2
-starter,application_error,0,0,27,29
-
-
-
-starter,process_globals,0,1,6,10
-
-
-
-starter,service_create,0,0,12,16
-
-
-
-starter,service_destroy,0,0,31,33
-
-
-
-starter,service_start,0,0,18,20
-
-
-
-starter,service_taskremoved,0,0,22,24
-
-
-
-wyvern,class_globals,0,0,1,6
-
-
-
-wyvern,initialize,0,0,9,11
-
-
-
-wyverns,class_globals,0,0,1,3
-
-
-
-wyverns,createjson,0,0,93,97
-
-
-
-wyverns,createwyvern,1,0,9,29
-httputils2service,tempfolder
-
-httpjob,initialize,httpjob,poststring,,createjson,httpjob,getstring,httpjob,release,httpjob,postbytes,httpjob,addscheme,httpjob,getstring2
-wyverns,deletewyvern,1,0,77,91
-httputils2service,tempfolder
-
-httpjob,initialize,httpjob,delete,httpjob,release,httpjob,addscheme
-wyverns,initialize,0,0,5,7
-
-
-
-wyverns,readwyvernbyid,1,0,32,53
-httputils2service,tempfolder
+main,activity_create,1,0,28,31
+,acttipo,,txtelemento,,txtid,,txtnombre,,txttipo,,tiposwyverns,httputils2service,tempfolder
+,acttipo,,txtelemento,,txtid,,txtnombre,,txttipo
+,cargartiposdewyvern,httpjob,initialize,httpjob,download,httpjob,getstring,httpjob,release,httpjob,addscheme,httpjob,getstring2
+main,cargartiposdewyvern,0,0,41,68
+,tiposwyverns,,acttipo,httputils2service,tempfolder
 
 httpjob,initialize,httpjob,download,httpjob,getstring,httpjob,release,httpjob,addscheme,httpjob,getstring2
-wyverns,updatewyvern,1,0,55,75
-httputils2service,tempfolder
+main,activity_pause,0,0,37,39
 
-httpjob,initialize,httpjob,putstring,,createjson,httpjob,getstring,httpjob,release,httpjob,putbytes,httpjob,addscheme,httpjob,getstring2
+
+
+main,activity_resume,0,0,33,35
+
+
+
+main,btnbuscar_click,1,1,124,164
+,txtid,,txtnombre,,txtelemento,,txttipo,,tiposwyverns,,acttipo,httputils2service,tempfolder
+
+httpjob,initialize,httpjob,download,httpjob,getstring,httpjob,release,httpjob,addscheme,httpjob,getstring2
+main,btneditar_click,0,1,211,254
+,txtid,,tiposwyverns,,acttipo,,txtnombre,,txtelemento,httputils2service,tempfolder
+
+,getkeyfromvalue,httpjob,initialize,httpjob,putstring,httpjob,getrequest,httpjob,release,httpjob,putbytes,httpjob,addscheme
+main,getkeyfromvalue,0,1,70,77
+
+
+
+main,btneliminar_click,0,1,79,122
+,txtid,,txttipo,httputils2service,tempfolder
+
+httpjob,initialize,httpjob,delete,httpjob,getstring,httpjob,release,httpjob,addscheme,httpjob,getstring2
+main,btninsertar_click,0,1,166,206
+,txtnombre,,txtelemento,,tiposwyverns,,acttipo,httputils2service,tempfolder
+
+,getkeyfromvalue,httpjob,initialize,httpjob,poststring,httpjob,getrequest,httpjob,release,httpjob,postbytes,httpjob,addscheme
+main,globals,0,1,19,26
+
+
+
+main,process_globals,0,1,15,17
+
+
+
 httpjob,initialize,0,0,38,48
 
 
 
-httpjob,poststring,0,0,58,60
+httpjob,download,0,0,219,228
 
 
-,postbytes,,addscheme
+,addscheme
 httpjob,getstring,0,0,291,293
 httputils2service,tempfolder
 
@@ -153,23 +64,23 @@ httpjob,release,0,0,284,288
 httputils2service,tempfolder
 
 
-httpjob,delete,0,0,261,270
-
-
-,addscheme
-httpjob,download,0,0,219,228
-
-
-,addscheme
 httpjob,putstring,0,0,75,77
 
 
 ,putbytes,,addscheme
-httpjob,complete,0,0,315,318
-
-
-
 httpjob,getrequest,0,0,310,312
+
+
+
+httpjob,delete,0,0,261,270
+
+
+,addscheme
+httpjob,poststring,0,0,58,60
+
+
+,postbytes,,addscheme
+httpjob,complete,0,0,315,318
 
 
 
@@ -245,19 +156,27 @@ httpjob,putbytes,0,0,80,89
 
 
 ,addscheme
-tipowyvern,class_globals,0,0,1,4
+starter,application_error,0,0,27,29
 
 
 
-tipowyvern,initialize,0,0,7,9
+starter,process_globals,0,1,6,10
 
 
 
-retrofitclient,class_globals,0,0,1,3
+starter,service_create,0,0,12,16
 
 
 
-retrofitclient,initialize,0,0,6,8
+starter,service_destroy,0,0,31,33
+
+
+
+starter,service_start,0,0,18,20
+
+
+
+starter,service_taskremoved,0,0,22,24
 
 
 

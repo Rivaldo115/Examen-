@@ -1,23 +1,17 @@
 ﻿Build1=Default,b4a.example
 File1=Layout.bal
-File2=layout2.bal
 FileGroup1=Default Group
-FileGroup2=Default Group
 Group=Default Group
 Library1=core
-Library2=okhttputils2
-Library3=xui
-Library4=json
+Library2=json
+Library3=okhttputils2
+Library4=xui
+Library5=okhttp
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
-Module1=RetrofitClient
-Module2=Starter
-Module3=TipoWyvern
-Module4=TipoWyvernRepository
-Module5=Wyvern
-Module6=Wyverns
-NumberOfFiles=2
-NumberOfLibraries=4
-NumberOfModules=6
+Module1=Starter
+NumberOfFiles=1
+NumberOfLibraries=5
+NumberOfModules=1
 Version=12.8
 @EndOfDesignText@
 #Region  Project Attributes 
@@ -36,7 +30,6 @@ Version=12.8
 
 Sub Process_Globals
 	Private xui As XUI
-	Private tipoWyvernRepo As TipoWyvernRepository
 End Sub
 
 Sub Globals
@@ -44,11 +37,13 @@ Sub Globals
 	Private txtNombre As EditText
 	Private txtElemento As EditText
 	Private txtTipo As EditText
-	Private tiposWyverns As List
+	Private actTipo As AutoCompleteEditText
+	Private tiposWyverns As Map
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
-	Activity.LoadLayout("layout2")
+	Activity.LoadLayout("Layout")
+	CargarTiposDeWyvern
 End Sub
 
 Sub Activity_Resume
@@ -59,35 +54,218 @@ Sub Activity_Pause (UserClosed As Boolean)
 
 End Sub
 
+Private Sub CargarTiposDeWyvern
+	Dim peticion As HttpJob
+	peticion.Initialize("JobTiposDeWyvern", Me)
+	peticion.Download("https://6637fe834253a866a24c8fc8.mockapi.io/prueba/Tipo_Wyvern")
+	Wait For (peticion) JobDone(respuesta As HttpJob)
+    
+	If respuesta.Success Then
+		Dim json As String = respuesta.GetString
+		Dim jsonParser As JSONParser
+		jsonParser.Initialize(json)
+        
+		Dim listaTipos As List = jsonParser.NextArray
+		tiposWyverns.Initialize
+		Dim items As List
+		items.Initialize
+        
+		For Each tipo As Map In listaTipos
+			tiposWyverns.Put(tipo.Get("id"), tipo.Get("Nombre"))
+			items.Add(tipo.Get("Nombre"))
+		Next
+        
+		actTipo.SetItems(items)
+	Else
+		MsgboxAsync("No se pudo obtener la lista de tipos de wyvern. " & respuesta.ErrorMessage, "Error")
+	End If
 
+	peticion.Release
+End Sub
+
+Private Sub GetKeyFromValue(map As Map, value As String) As String
+	For i = 0 To map.Size - 1
+		If map.GetValueAt(i) = value Then
+			Return map.GetKeyAt(i)
+		End If
+	Next
+	Return ""
+End Sub
 
 Private Sub btnEliminar_Click
-	Dim id As String = txtId.Text
-	tipoWyvernRepo.DeleteTipoWyvern(id)
-	txtId.Text = ""
-	txtNombre.Text = ""
-	Msgbox("Registro borrado", "ok")
+	' Validar que los campos de texto del ID y del tipo de wyvern no estén vacíos
+	If txtId.Text.Trim = "" Then
+		MsgboxAsync("Debes ingresar el ID del wyvern para eliminarlo.", "Error")
+		Return
+	End If
+    
+	If txtTipo.Text.Trim = "" Then
+		MsgboxAsync("Debes ingresar el ID del tipo de wyvern para eliminarlo.", "Error")
+		Return
+	End If
+
+	Dim wyvernId As Int
+	Dim tipoId As Int
+	Try
+		wyvernId = txtId.Text
+		tipoId = txtTipo.Text
+	Catch
+		MsgboxAsync("Los IDs deben ser numéricos.", "Error")
+		Return
+	End Try
+    
+	Dim peticion As HttpJob
+	peticion.Initialize("jobDelete", Me)
+    
+	' Construir la URL con el ID del tipo de wyvern y el ID del wyvern
+	Dim url As String = "https://6637fe834253a866a24c8fc8.mockapi.io/prueba/Tipo_Wyvern/" & tipoId & "/Wyverns/" & wyvernId
+	Log("URL de la solicitud DELETE: " & url)
+    
+	' Configurar y enviar la solicitud DELETE a la API
+	peticion.Delete(url)
+    
+	' Esperar la respuesta de la solicitud
+	Wait For (peticion) JobDone(respuesta As HttpJob)
+	If respuesta.Success Then
+		MsgboxAsync("Wyvern eliminado!", "Éxito")
+	Else
+		Log("Error: " & respuesta.ErrorMessage)
+		Log("Respuesta: " & respuesta.GetString)
+		MsgboxAsync("No se pudo eliminar. " & respuesta.ErrorMessage, "Error")
+	End If
+    
+	peticion.Release
 End Sub
 
 Private Sub btnBuscar_Click
-	Dim id As String = txtId.Text
-	tipoWyvernRepo.ReadTipoWyvernById(id)
+	Dim Id As Int
+	Try
+		Id = txtId.Text
+	Catch
+		MsgboxAsync("El Id debe ser numérico.", "Error")
+		Return
+	End Try
+	
+	Dim peticion As HttpJob
+	peticion.Initialize("", Me)
+	peticion.Download("https://6637fe834253a866a24c8fc8.mockapi.io/prueba/Wyverns/" & Id)
+	Wait For (peticion) JobDone(respuesta As HttpJob)
+	
+	If respuesta.Success Then
+		Dim json As String
+		json = respuesta.GetString
+
+		Dim jsonParser As JSONParser
+		jsonParser.Initialize(json)
+		
+		Dim map As Map = jsonParser.NextObject
+
+
+
+		txtId.Text = map.Get("id")
+		txtNombre.Text = map.Get("Nombre")
+		txtElemento.Text = map.Get("Elemento")
+		txtTipo.Text = map.Get("Tipo_WyvernId")
+		
+		Dim tipoWyvernId As String = map.Get("Tipo_WyvernId")
+		Dim tipoWyvernNombre As String = tiposWyverns.Get(tipoWyvernId)
+		actTipo.Text = tipoWyvernNombre
+
+	Else
+		MsgboxAsync("No se pudo obtener la información del wyvern. " & respuesta.ErrorMessage, "Error")
+	End If
+
+	peticion.Release
+	
 End Sub
 
 Private Sub btnInsertar_Click
+	Dim map As Map
+	Dim json As String
+	Dim jsonGenerator As JSONGenerator
+
+	' Asegúrate de tener EditText para cada campo relevante en tu layout
 	Dim nombre As String = txtNombre.Text
-	CallSubDelayed2(tipoWyvernRepo, "CreateTipoWyvern", Array As String(txtNombre.Text))
-	Msgbox("Tipo Wyvern ingresado", "ok")
+	Dim elemento As String = txtElemento.Text
+	Dim tipo As String = GetKeyFromValue(tiposWyverns, actTipo.Text)
+	If tipo = "" Then
+		MsgboxAsync("Tipo de Wyvern no válido.", "Error")
+		Return
+	End If
+    
+	' Inicializa el mapa con los datos de la nueva computadora
+	map.Initialize
+	map.Put("Nombre", nombre)
+	map.Put("Elemento", elemento)
+	map.Put("Tipo_WyvernId", tipo)
+    
+	' Inicializa el JSONGenerator con el mapa y convierte a una cadena JSON
+	jsonGenerator.Initialize(map)
+	json = jsonGenerator.ToPrettyString(2)
+
+	' Inicializa y configura la solicitud HTTP POST
+	Dim peticion As HttpJob
+	peticion.Initialize("jobInsertar", Me)
+	peticion.PostString("https://6637fe834253a866a24c8fc8.mockapi.io/prueba/Wyverns/", json)
+	peticion.GetRequest.SetContentType("application/json")
+    
+	' Espera la respuesta de la solicitud
+	Wait For (peticion) JobDone(respuesta As HttpJob)
+	If respuesta.Success Then
+		MsgboxAsync("Wyvern creado.", "Éxito")
+	Else
+		MsgboxAsync("No se pudo crear wyvern. " & respuesta.ErrorMessage, "Error")
+	End If
+
+	' Libera los recursos del objeto HttpJob
+	peticion.Release
 End Sub
+
+' Función para obtener la clave a partir del valor en un mapa
+
 
 Private Sub btnEditar_Click
-	Dim id As String = txtId.Text
-	Dim nombre As String = txtNombre.Text
-	CallSub2(tipoWyvernRepo, "UpdateTipoWyvern", Array As String(id, nombre))
-	Msgbox("Registro actualizado", "ok")
+	' Validar que se haya ingresado un ID
+	If txtId.Text.Trim = "" Then
+		MsgboxAsync("El ID es necesario para actualizar.", "Error")
+		Return
+	End If
+	
+	' Obtener el ID del tipo de wyvern desde el AutoCompleteEditText
+	Dim tipo As String = GetKeyFromValue(tiposWyverns, actTipo.Text)
+	If tipo = "" Then
+		MsgboxAsync("Tipo de Wyvern no válido.", "Error")
+		Return
+	End If
+	
+	' Crear un mapa con todos los campos que se van a actualizar
+	Dim map As Map
+	Dim json As String
+	Dim jsonGenerator As JSONGenerator
+	Dim peticion As HttpJob
+	peticion.Initialize("jobUpdate", Me)
+    
+	map.Initialize
+	map.Put("id", txtId.Text)
+	map.Put("Nombre", txtNombre.Text)
+	map.Put("Elemento", txtElemento.Text)
+	map.Put("Tipo_WyvernId", tipo)
+    
+	' Convertir el mapa a JSON
+	jsonGenerator.Initialize(map)
+	json = jsonGenerator.ToString
+    
+	' Enviar la solicitud PUT a la API
+	peticion.PutString("https://6637fe834253a866a24c8fc8.mockapi.io/prueba/Wyverns/" & txtId.Text, json)
+	peticion.GetRequest.SetContentType("application/json")
+    
+	' Esperar por la respuesta de la solicitud
+	Wait For (peticion) JobDone(respuesta As HttpJob)
+	If respuesta.Success Then
+		MsgboxAsync("Actualizado!", "Éxito")
+	Else
+		MsgboxAsync("No se pudo actualizar. " & respuesta.ErrorMessage, "Error")
+	End If
+	peticion.Release
 End Sub
 
-Sub FillTipoWyvernDetails(tipoWyvern As Map)
-	txtId.Text = tipoWyvern.Get("id")
-	txtNombre.Text = tipoWyvern.Get("Nombre")
-End Sub
