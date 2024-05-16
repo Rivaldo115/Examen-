@@ -1,0 +1,49 @@
+--release
+--output
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects
+--lib
+C:\Android\platforms\android-33\android.jar
+C:\Android\tools\..\extras\b4a_local\unpacked-b4ashared-63837495756000\dex_v1\b4ashared.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-debug-63837495758000\dex_v1\debug.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-core-63837495758000\dex_v1\core.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-xui-63837495758000\dex_v1\xui.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-json-63837495758000\dex_v1\json.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-okhttp-63837495758000\dex_v1\okhttp.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-stringutils-63837495758000\dex_v1\stringutils.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-javaobject-63837495758000\dex_v1\javaobject.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-okhttp-4.9.0-63837495758000\dex_v1\okhttp-4.9.0.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-okio-2.8.0-63837495758000\dex_v1\okio-2.8.0.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-okhttp-urlconnection-4.9.3-63837495758000\dex_v1\okhttp-urlconnection-4.9.3.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-kotlin-stdlib-1.6.10-63837495758000\dex_v1\kotlin-stdlib-1.6.10.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-remotelogger-63837495758000\dex_v1\remotelogger.zip
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\httpjob$_multipartfiledata.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\httpjob.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\httputils2service.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\main$1.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\main$B4AMenuItemsClickListener.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\main$HandleKeyDelayed.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\main$ResumeMessage.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\main$WaitForLayout.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\main.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\R$drawable.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\R$style.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\R.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\retrofitclient.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\starter$1.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\starter$2.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\starter$starter_BR.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\starter.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\tipowyvern.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\tipowyvernrepository$ResumableSub_CreateTipoWyvern.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\tipowyvernrepository$ResumableSub_DeleteTipoWyvern.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\tipowyvernrepository$ResumableSub_ReadTipoWyvernById.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\tipowyvernrepository$ResumableSub_UpdateTipoWyvern.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\tipowyvernrepository.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\wyvern.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\wyverns$ResumableSub_CreateWyvern.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\wyverns$ResumableSub_DeleteWyvern.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\wyverns$ResumableSub_ReadWyvernById.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\wyverns$ResumableSub_UpdateWyvern.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\wyverns.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\designerscripts\LS_layout.dex
+D:\Nivel 7\APLICACIONES MOVILES\Examen\Objects\dexed\b4a\example\designerscripts\LS_layout2.dex

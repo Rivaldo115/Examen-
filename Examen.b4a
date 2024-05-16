@@ -1,0 +1,93 @@
+﻿Build1=Default,b4a.example
+File1=Layout.bal
+File2=layout2.bal
+FileGroup1=Default Group
+FileGroup2=Default Group
+Group=Default Group
+Library1=core
+Library2=okhttputils2
+Library3=xui
+Library4=json
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
+Module1=RetrofitClient
+Module2=Starter
+Module3=TipoWyvern
+Module4=TipoWyvernRepository
+Module5=Wyvern
+Module6=Wyverns
+NumberOfFiles=2
+NumberOfLibraries=4
+NumberOfModules=6
+Version=12.8
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: B4A Example
+	#VersionCode: 1
+	#VersionName: 
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: unspecified
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: True
+#End Region
+
+Sub Process_Globals
+	Private xui As XUI
+	Private tipoWyvernRepo As TipoWyvernRepository
+End Sub
+
+Sub Globals
+	Private txtId As EditText
+	Private txtNombre As EditText
+	Private txtElemento As EditText
+	Private txtTipo As EditText
+	Private tiposWyverns As List
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	Activity.LoadLayout("layout2")
+End Sub
+
+Sub Activity_Resume
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+
+
+Private Sub btnEliminar_Click
+	Dim id As String = txtId.Text
+	tipoWyvernRepo.DeleteTipoWyvern(id)
+	txtId.Text = ""
+	txtNombre.Text = ""
+	Msgbox("Registro borrado", "ok")
+End Sub
+
+Private Sub btnBuscar_Click
+	Dim id As String = txtId.Text
+	tipoWyvernRepo.ReadTipoWyvernById(id)
+End Sub
+
+Private Sub btnInsertar_Click
+	Dim nombre As String = txtNombre.Text
+	CallSubDelayed2(tipoWyvernRepo, "CreateTipoWyvern", Array As String(txtNombre.Text))
+	Msgbox("Tipo Wyvern ingresado", "ok")
+End Sub
+
+Private Sub btnEditar_Click
+	Dim id As String = txtId.Text
+	Dim nombre As String = txtNombre.Text
+	CallSub2(tipoWyvernRepo, "UpdateTipoWyvern", Array As String(id, nombre))
+	Msgbox("Registro actualizado", "ok")
+End Sub
+
+Sub FillTipoWyvernDetails(tipoWyvern As Map)
+	txtId.Text = tipoWyvern.Get("id")
+	txtNombre.Text = tipoWyvern.Get("Nombre")
+End Sub
